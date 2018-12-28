@@ -24,36 +24,23 @@ namespace CA1
   
         public static List<int> Find(List<int> full, int F)
         {
+            const int INIT_SUM = 0, INIT_DIFF = 0;
             List<int> res = new List<int>();
-            Queue<int> q = new Queue<int>();
-            int bestDiff = int.MaxValue, curSum = 0;
-            foreach (int x in full)
+            int bestdiff = int.MaxValue, sum = INIT_SUM, diff = INIT_DIFF;
+            for (int i = 0; i < full.Count; i++)
             {
-                q.Enqueue(x);
-                curSum += x;
-                if (Math.Abs(F - curSum) < bestDiff)
+                sum = 0;
+                for (int j = i; j < full.Count; j++)
                 {
-                    res.Clear();
-                    res.AddRange(q);
-                    bestDiff = Math.Abs(F - curSum);
-                    //no any reasons to continue
-                    if (bestDiff == 0) return res;
-                }
-                //cleaning queue
-                while (curSum > F && q.Count > 1)
-                {
-                    try {
-                        curSum -= q.Dequeue();
-                        if (Math.Abs(F - curSum) < bestDiff)
-                        {
-                            res.Clear();
-                            res.AddRange(q);
-                            bestDiff = Math.Abs(F - curSum);
-                            //no any reasons to continue
-                            if (bestDiff == 0) return res;
-                        }
+                    sum += full[j];
+                    diff = Math.Abs(sum - F);
+                    if (diff < bestdiff)
+                    {
+                        res.Clear();
+                        res.AddRange(full.GetRange(i, j - i + 1));
+                        bestdiff = diff;
+                        if (bestdiff == 0) return res;
                     }
-                    catch (InvalidOperationException) {break; }
                 }
             }
             return res;
