@@ -21,7 +21,13 @@ namespace CA1
             return list;
         }
 
-  
+
+        /// <summary>
+        /// Core function.
+        /// </summary>
+        /// <param name="full">Input list</param>
+        /// <param name="F">F</param>
+        /// <returns></returns>
         public static List<int> Find(List<int> full, int F)
         {
             const int INIT_SUM = 0, INIT_DIFF = 0;

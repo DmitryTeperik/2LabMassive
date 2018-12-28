@@ -21,7 +21,11 @@ namespace CA1
         }
 
 
-       
+        /// <summary>
+        /// btnFind pressed. Main work is here.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>  
         private void btnFind_Click(object sender, EventArgs e)
         {
             List<int> list = Help.StringToIntList(tbArray.Text);
@@ -44,15 +48,24 @@ namespace CA1
             }
 
         }
-        
 
-   
+
+        /// <summary>
+        /// Cleaning tb
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>   
         private void btnClear_Click(object sender, EventArgs e)
         {
             tbArray.Clear();
         }
 
 
+        /// <summary>
+        /// Filling tb with random numbers
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRandom_Click(object sender, EventArgs e)
         {
             tbArray.Clear();
@@ -60,7 +73,11 @@ namespace CA1
             for (int i = 0; i < LEN_FOR_RANDOM; i++) tbArray.AppendText(rnd.Next(MIN, MAX).ToString() + " ");
         }
 
-
+        /// <summary>
+        /// Enable only digits, minus and spaces
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tbArray_KeyPress(object sender, KeyPressEventArgs e)
         {
             char c = e.KeyChar;
@@ -70,7 +87,11 @@ namespace CA1
 
 
 
-        
+        /// <summary>
+        /// Enable only digits and minus 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>       
         private void tbF_KeyPress(object sender, KeyPressEventArgs e)
         {
             char c = e.KeyChar;
